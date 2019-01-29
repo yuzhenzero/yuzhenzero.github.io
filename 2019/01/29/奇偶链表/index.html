@@ -427,10 +427,12 @@
                 <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。</p>
 <p>请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。</p>
 <p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</span><br><span class="line">输出: 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL </span><br><span class="line">输出: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</span><br></pre></td></tr></table></figure>
-<p><strong>说明:</strong></p>
+<pre><code>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
+输出: 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL
+</code></pre><p><strong>示例 2:</strong></p>
+<pre><code>输入: 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL 
+输出: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL
+</code></pre><p><strong>说明:</strong></p>
 <ul>
 <li>应当保持奇数节点和偶数节点的相对顺序。</li>
 <li>链表的第一个节点视为奇数节点，第二个节点视为偶数节点，以此类推。</li>
@@ -439,7 +441,34 @@
 <h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>说到奇偶，就联想到使用双指针。</p>
 <p>隔一个取一个元素，新建一个链表，把取出来的索引为偶数的元素放进去，原链表剩下的都是索引为奇数的元素，再把两个链表拼接起来，就可以得到结果。示意图如下：</p>
 <p><img src="https://leetcode.com/problems/odd-even-linked-list/Figures/328_Odd_Even.svg" alt="奇偶链表分步示意图"></p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">oddEvenList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>)   <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode odd = head;</span><br><span class="line">        ListNode even = odd.next;</span><br><span class="line">        ListNode evenHead = even;</span><br><span class="line">        <span class="keyword">while</span> (even != <span class="keyword">null</span> &amp;&amp; even.next != <span class="keyword">null</span>) </span><br><span class="line">        &#123;<span class="comment">// 之所以不用奇指针判断，是因为偶数指针比奇数指针先到链表尾部</span></span><br><span class="line">            odd.next = even.next;</span><br><span class="line">            odd = odd.next;</span><br><span class="line">            even.next = odd.next;</span><br><span class="line">            even = even.next;</span><br><span class="line">        &#125;</span><br><span class="line">        odd.next = evenHead;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">oddEvenList</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> null<span class="token punctuation">)</span>   <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        ListNode odd <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        ListNode even <span class="token operator">=</span> odd<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        ListNode evenHead <span class="token operator">=</span> even<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>even <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> even<span class="token punctuation">.</span>next <span class="token operator">!=</span> null<span class="token punctuation">)</span> 
+        <span class="token punctuation">{</span><span class="token comment" spellcheck="true">// 之所以不用奇指针判断，是因为偶数指针比奇数指针先到链表尾部</span>
+            odd<span class="token punctuation">.</span>next <span class="token operator">=</span> even<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            odd <span class="token operator">=</span> odd<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            even<span class="token punctuation">.</span>next <span class="token operator">=</span> odd<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            even <span class="token operator">=</span> even<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        odd<span class="token punctuation">.</span>next <span class="token operator">=</span> evenHead<span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> head<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>有一个小<strong>细节</strong>需要注意一下，在判断链表是否走完的时候，我们要使用偶指针判断，因为在初始位置，偶指针是在奇指针的后面一个位置，在若干轮的操作过后，偶指针比奇指针先到达链表尾部。</p>
 
             </div>
@@ -690,7 +719,7 @@
         tocbot.init({
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
-            headingSelector: 'h2, h3, h4'
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -702,7 +731,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
