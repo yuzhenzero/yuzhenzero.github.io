@@ -5,15 +5,21 @@
   
 
   
-  <title>Yu Zhen</title>
+  <title>动态规划 | Yu Zhen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yu Zhen">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="LeetCode探索初级算法 - 动态规划今天在LeetCode上做了几个简单的动态规划的题目，也算是对动态规划有个基本的了解了。现在对动态规划这个算法做一个简单的总结。 什么是动态规划动态规划英文 Dynamic Programming，是求解决策过程最优化的数学方法，后来沿用到了编程领域。 动态规划的大致思路是把一个复杂的问题转化成一个分阶段逐步递推的过程，从简单的初始状态一步一步递推，最终得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划">
+<meta property="og:url" content="http://yoursite.com/2019/01/29/动态规划/index.html">
 <meta property="og:site_name" content="Yu Zhen">
+<meta property="og:description" content="LeetCode探索初级算法 - 动态规划今天在LeetCode上做了几个简单的动态规划的题目，也算是对动态规划有个基本的了解了。现在对动态规划这个算法做一个简单的总结。 什么是动态规划动态规划英文 Dynamic Programming，是求解决策过程最优化的数学方法，后来沿用到了编程领域。 动态规划的大致思路是把一个复杂的问题转化成一个分阶段逐步递推的过程，从简单的初始状态一步一步递推，最终得">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-66e96cddede345f4124e5b2fa320f375_r.jpg">
+<meta property="og:updated_time" content="2019-01-29T13:20:33.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yu Zhen">
+<meta name="twitter:title" content="动态规划">
+<meta name="twitter:description" content="LeetCode探索初级算法 - 动态规划今天在LeetCode上做了几个简单的动态规划的题目，也算是对动态规划有个基本的了解了。现在对动态规划这个算法做一个简单的总结。 什么是动态规划动态规划英文 Dynamic Programming，是求解决策过程最优化的数学方法，后来沿用到了编程领域。 动态规划的大致思路是把一个复杂的问题转化成一个分阶段逐步递推的过程，从简单的初始状态一步一步递推，最终得">
+<meta name="twitter:image" content="https://pic2.zhimg.com/v2-66e96cddede345f4124e5b2fa320f375_r.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Yu Zhen" type="application/atom+xml">
   
@@ -60,62 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-奇偶链表" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/29/奇偶链表/" class="article-date">
-  <time datetime="2019-01-29T13:22:54.000Z" itemprop="datePublished">2019-01-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/29/奇偶链表/">奇偶链表</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。</p>
-<p>请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</span><br><span class="line">输出: 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</span><br></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL </span><br><span class="line">输出: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</span><br></pre></td></tr></table></figure>
-<p><strong>说明:</strong></p>
-<ul>
-<li>应当保持奇数节点和偶数节点的相对顺序。</li>
-<li>链表的第一个节点视为奇数节点，第二个节点视为偶数节点，以此类推。</li>
-</ul>
-<hr>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>说到奇偶，就联想到使用双指针。</p>
-<p>隔一个取一个元素，新建一个链表，把取出来的索引为偶数的元素放进去，原链表剩下的都是索引为奇数的元素，再把两个链表拼接起来，就可以得到结果。示意图如下：</p>
-<p><img src="https://leetcode.com/problems/odd-even-linked-list/Figures/328_Odd_Even.svg" alt="奇偶链表分步示意图"></p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">oddEvenList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>)   <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode odd = head;</span><br><span class="line">        ListNode even = odd.next;</span><br><span class="line">        ListNode evenHead = even;</span><br><span class="line">        <span class="keyword">while</span> (even != <span class="keyword">null</span> &amp;&amp; even.next != <span class="keyword">null</span>) </span><br><span class="line">        &#123;<span class="comment">// 之所以不用奇指针判断，是因为偶数指针比奇数指针先到链表尾部</span></span><br><span class="line">            odd.next = even.next;</span><br><span class="line">            odd = odd.next;</span><br><span class="line">            even.next = odd.next;</span><br><span class="line">            even = even.next;</span><br><span class="line">        &#125;</span><br><span class="line">        odd.next = evenHead;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>有一个小<strong>细节</strong>需要注意一下，在判断链表是否走完的时候，我们要使用偶指针判断，因为在初始位置，偶指针是在奇指针的后面一个位置，在若干轮的操作过后，偶指针比奇指针先到达链表尾部。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/29/奇偶链表/" data-id="cjrhsnvlq0004m8nk14j10is3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/29/动态规划/" class="article-date">
   <time datetime="2019-01-29T13:20:00.000Z" itemprop="datePublished">2019-01-29</time>
@@ -128,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/29/动态规划/">动态规划</a>
+    <h1 class="article-title" itemprop="name">
+      动态规划
     </h1>
   
 
@@ -221,131 +172,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-test-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/27/test-1/" class="article-date">
-  <time datetime="2018-04-27T11:49:13.000Z" itemprop="datePublished">2018-04-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2019/01/29/奇偶链表/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/test-1/">test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>可以发现，「前中后」是指根节点在三个节点中的相对顺序。</p>
-<p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190114134819.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/test-1/" data-id="cjrhsnvlg0001m8nknanpozxn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/27/test/" class="article-date">
-  <time datetime="2018-04-27T08:19:44.000Z" itemprop="datePublished">2018-04-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          奇偶链表
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/test/">test</a>
-    </h1>
   
+    <a href="/2018/04/27/test-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">test</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是一篇测试文章，欢迎关注作者博客</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/test/" data-id="cjrhsnvlg0002m8nklu35ogkp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/27/hello-world/" class="article-date">
-  <time datetime="2018-04-27T08:05:29.665Z" itemprop="datePublished">2018-04-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/hello-world/" data-id="cjrhsnvl60000m8nk7ym48841" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
