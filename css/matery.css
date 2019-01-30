@@ -86,7 +86,7 @@ hr {
 }
 
 blockquote {
-    border-left: 5px solid #42b983;
+    border-left: 5px solid #9400D3;
     padding: 1rem 0.8rem 0.2rem 0.8rem;
     color: #666;
     background-color: rgba(66, 185, 131, .1);
@@ -162,11 +162,11 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #4B0082 0%, #9400D3 100%);
 }
 
 .text-color {
-    color: #0f9d58 !important;
+    color: #9400D3 !important;
 }
 
 .white-color {
@@ -193,7 +193,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to right, #4B0082 0%, #9400D3 100%);
     opacity: 0.8;
 }
 
@@ -401,7 +401,7 @@ header .go-back i {
 .bg-cover .post-title {
     font-size: 1.9rem;
 }
-
+/*
 @-webkit-keyframes rainbow {
     0%,
     100% {
@@ -481,7 +481,7 @@ header .go-back i {
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
     }
 }
-
+*/
 .recommend {
     margin-top: 20px;
 }
@@ -651,7 +651,7 @@ article a {
 
 article a:hover {
     font-weight: bold;
-    color: #42b983;
+    color: #9400D3;
     text-decoration: underline;
 }
 
@@ -819,12 +819,12 @@ article .article-tags .chip {
 
 #artDetail .post-cate {
     float: right;
-    color: #42b983;
+    color: #9400D3;
 }
 
 #artDetail .post-cate a {
     padding-right: 5px;
-    color: #42b983;
+    color: #9400D3;
     font-weight: 500;
 }
 
@@ -843,7 +843,7 @@ article .article-tags .chip {
 
 #artDetail .post-info .post-category:hover {
     font-weight: bold;
-    color: #42b983;
+    color: #9400D3;
     text-decoration: underline;
 }
 
@@ -900,7 +900,7 @@ article .article-tags .chip {
 
 #artDetail .reprint a {
     font-size: 1.05rem;
-    color: #42b983;
+    color: #9400D3;
     font-weight: 500;
 }
 
@@ -916,7 +916,7 @@ article .article-tags .chip {
 
 #articleContent a {
     padding: 0 2px;
-    color: #42b983;
+    color: #9400D3;
     font-weight: 500;
     text-decoration: underline;
     word-wrap:break-word;
@@ -1041,7 +1041,7 @@ table tr:nth-child(2n), thead {
 
 .chip-container .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%) !important;
+    background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%) !important;
 }
 
 .chip .tag-length {
@@ -1116,7 +1116,7 @@ table tr:nth-child(2n), thead {
     left: 18px;
     height: 100%;
     width: 4px;
-    background: #0f9d58;
+    background: #9400D3;
 }
 
 @media only screen and (min-width: 900px) {
@@ -1331,7 +1331,7 @@ table tr:nth-child(2n), thead {
 }
 
 .post-statis .statis .count a {
-    color: #42b983;
+    color: #9400D3;
 }
 
 .post-statis .statis .name {
@@ -1352,8 +1352,8 @@ table tr:nth-child(2n), thead {
     margin: 0 0.5rem;
     padding: 0;
     color: #fff;
-    border: 1px solid #0f9d58;
-    background: radial-gradient(#4cbf30, #0f9d58);;
+    border: 1px solid #9400D3;
+    background: radial-gradient(#4B0082, #9400D3);;
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1528,8 +1528,8 @@ table tr:nth-child(2n), thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);;
-    border: 1px solid #4cbf30;
+    background: linear-gradient(to right, #4B0082 0%, #9400D3 100%);;
+    border: 1px solid #4B0082;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
 
@@ -1595,7 +1595,7 @@ footer .copy-right {
 
 .search-result-list .search-result-title {
     font-size: 1.4rem;
-    color: #42b983;
+    color: #9400D3;
 }
 
 .search-result-list li {
@@ -1625,7 +1625,7 @@ footer .copy-right {
 }
 
 .top-scroll .btn-floating {
-    background: linear-gradient(to bottom right, #FF5E3A 0%, #FF2A68 100%);
+    background: linear-gradient(to bottom, #9932CC 0%, #8B008B 100%);
     width: 48px;
     height: 48px;
 }
