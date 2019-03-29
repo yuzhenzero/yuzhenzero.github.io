@@ -5,12 +5,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="5-最长回文子串, yuzhenzero">
-    <meta name="description" content="题目描述给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
-示例 1：
-输入: &amp;quot;babad&amp;quot;
-输出: &amp;quot;bab&amp;quot;
-注意: &amp;quot;aba&amp;quot; 也是一">
+    <meta name="keywords" content="240-搜索二维矩阵2, yuzhenzero">
+    <meta name="description" content="题目描述编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：
+
+每行的元素从左到右升序排列。
+每列的元素从上到下升序排列。
+
+示例:
+现有矩阵 matrix 如下：
+[
+  [1,  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +22,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>5-最长回文子串 | yuzhenzero</title>
+    <title>240-搜索二维矩阵2 | yuzhenzero</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -277,13 +281,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        5-最长回文子串
+                        240-搜索二维矩阵2
                     </div>
                 </div>
             </div>
@@ -396,12 +400,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/字符串/" target="_blank">
-                                <span class="chip bg-color">字符串</span>
+                            <a href="/tags/二维数组/" target="_blank">
+                                <span class="chip bg-color">二维数组</span>
                             </a>
                         
-                            <a href="/tags/动态规划/" target="_blank">
-                                <span class="chip bg-color">动态规划</span>
+                            <a href="/tags/搜索/" target="_blank">
+                                <span class="chip bg-color">搜索</span>
                             </a>
                         
                     </div>
@@ -424,14 +428,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-07
+                    2019-03-29
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        469
+                        362
                     </div>
                     
 
@@ -454,55 +458,48 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个字符串 <code>s</code>，找到 <code>s</code> 中最长的回文子串。你可以假设 <code>s</code> 的最大长度为 1000。</p>
-<p><strong>示例 1：</strong></p>
-<pre><code>输入: &quot;babad&quot;
-输出: &quot;bab&quot;
-注意: &quot;aba&quot; 也是一个有效答案。
-</code></pre><p><strong>示例 2：</strong></p>
-<pre><code>输入: &quot;cbbd&quot;
-输出: &quot;bb&quot;
-</code></pre><hr>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>本题运用了一些动态规划的思想，关于动态规划，可以看看我之前的一篇博客了解一下。</p>
-<p><a href="https://zhuanlan.zhihu.com/p/49427827" target="_blank" rel="noopener">LeetCode 探索初级算法 - 动态规划</a></p>
-<p>1、首先要找到最简情况。这道题中的最简情况就是一个字母（比如”a”）和一对字母（比如”bb”）。</p>
-<p>2、根据最简情况向复杂拓展。更长的回文子串肯定是在简单的情况下增长而来的，如何增长呢？就是在上一个回文子串的基础上，左右各加一个同样的字母。</p>
-<p>3、针对一个中心，不断向外拓展，直到遇到不是回文子串。</p>
-<p>4、遍历字符串，对每一个字符使用一遍拓展检测，保存最长回文子串的长度，便于最后按索引取子串。</p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LongestPalindromicSubstring</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> String <span class="token function">longestPalindrome</span> <span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>s <span class="token operator">==</span> null <span class="token operator">||</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> end <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> len1 <span class="token operator">=</span> <span class="token function">expandAroundCenter</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> i<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 一字母回文拓展</span>
-            <span class="token keyword">int</span> len2 <span class="token operator">=</span> <span class="token function">expandAroundCenter</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> i<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 二字母回文拓展</span>
-            <span class="token keyword">int</span> len <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>len1<span class="token punctuation">,</span> len2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>len <span class="token operator">></span> end <span class="token operator">-</span> start<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                start <span class="token operator">=</span> i <span class="token operator">-</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-                end <span class="token operator">=</span> i <span class="token operator">+</span> len <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>编写一个高效的算法来搜索 <em>m</em> x <em>n</em> 矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：</p>
+<ul>
+<li>每行的元素从左到右升序排列。</li>
+<li>每列的元素从上到下升序排列。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<p>现有矩阵 matrix 如下：</p>
+<pre><code>[
+  [1,   4,  7, 11, 15],
+  [2,   5,  8, 12, 19],
+  [3,   6,  9, 16, 22],
+  [10, 13, 14, 17, 24],
+  [18, 21, 23, 26, 30]
+]
+</code></pre><p>给定 target = <code>5</code>，返回 <code>true</code>。</p>
+<p>给定 target = <code>20</code>，返回 <code>false</code>。</p>
+<hr>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>设置起始点为右上角的元素，总体的遍历方向是向左下，每次遍历，将<code>target</code>和当前元素<code>matrix[row][col]</code>进行比较。</p>
+<ul>
+<li>如果<code>target</code>大于当前元素，则说明<code>target</code>的坐标肯定在当前元素的下面，而不可能在左边</li>
+<li>如果<code>target</code>小于当前元素，则说明<code>target</code>的坐标肯定在当前元素的左边，而不可能在下面</li>
+<li>遍历完整个二维数组都没有找到匹配的<code>target</code>，则返回<code>false</code></li>
+</ul>
+<h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">searchMatrix</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix <span class="token operator">==</span> null <span class="token operator">||</span> matrix<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token operator">||</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> col <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>row <span class="token operator">&lt;=</span> matrix<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> col <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">==</span> matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">></span> matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            row<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">&lt;</span> matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            col<span class="token operator">--</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">// 返回一个回文字串的长度</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">expandAroundCenter</span> <span class="token punctuation">(</span>String s<span class="token punctuation">,</span> <span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> r <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            l<span class="token operator">--</span><span class="token punctuation">;</span>
-            r<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> r <span class="token operator">-</span> l <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span> <span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        LongestPalindromicSubstring lps <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LongestPalindromicSubstring</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String s <span class="token operator">=</span> <span class="token string">"babad"</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>lps<span class="token punctuation">.</span><span class="token function">longestPalindrome</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>1、从暴力破解方法入手，找到优化方法</p>
-<p>2、字符串方法<code>substring()</code>的索引是左闭右开的</p>
+<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>最开始想利用左上到右下的对角线进行二分查找，思路局限于二分查找，但实际上用线性时间实现起来更简便。</p>
 
             </div>
             <hr/>
@@ -643,7 +640,7 @@
                     </span>
                     <a href="https://yuzhenzero.github.io" class="b-link-green">yuzhenzero</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/07/5-zui-chang-hui-wen-zi-chuan/" class="b-link-green">5-最长回文子串</a>
+                    <a href="/2019/03/29/240-sou-suo-er-wei-ju-zhen-2/" class="b-link-green">240-搜索二维矩阵2</a>
                 </p>
             </div>
         </div>
@@ -665,7 +662,7 @@
         repo: 'blog-gitalk',
         owner: 'yuzhenzero',
         admin: "yuzhenzero",
-        id: '2019-01-07T21-45-22',
+        id: '2019-03-29T11-26-55',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -686,77 +683,33 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/01/08/334-di-zeng-de-san-yuan-zi-xu-lie/">
+                <a href="/2019/03/29/240-sou-suo-er-wei-ju-zhen-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="334-递增的三元子序列">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="240-搜索二维矩阵2">
                         
-                        <span class="card-title">334-递增的三元子序列</span>
+                        <span class="card-title">240-搜索二维矩阵2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述给定一个未排序的数组，判断这个数组中是否存在长度为 3 的递增子序列。
-数学表达式如下:
+                    <div class="summary">题目描述编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：
 
-如果存在这样的 i, j, k,  且满足 0 ≤ i &lt; j &lt; k ≤ n-1，使得 arr[i] &lt; arr[j] </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                    LeetCode
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/数组/" target="_blank">
-                        <span class="chip bg-color">数组</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/01/03/3-wu-chong-fu-zi-fu-de-zui-chang-zi-chuan/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="3-无重复字符的最长子串">
-                        
-                        <span class="card-title">3-无重复字符的最长子串</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">题目描述给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
-示例 1:
-输入: &quot;abcabcbb&quot;
-输出: 3 
-解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。
-示</div>
+每行的元素从左到右升序排列。
+每列的元素从上到下升序排列。
+
+示例:
+现有矩阵 matrix 如下：
+[
+  [1,  </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-03
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-29
                             </span>
                         <span class="publish-author">
                             
@@ -770,15 +723,75 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/字符串/" target="_blank">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/二维数组/" target="_blank">
+                        <span class="chip bg-color">二维数组</span>
                     </a>
                     
-                    <a href="/tags/哈希表/" target="_blank">
-                        <span class="chip bg-color">哈希表</span>
+                    <a href="/tags/搜索/" target="_blank">
+                        <span class="chip bg-color">搜索</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/15/hello-ajax/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Hello AJAX 分步解析">
+                        
+                        <span class="card-title">Hello AJAX 分步解析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">0. AJAX 请求和相应图示
+
+创建XHR对象
+设置响应函数
+设置要访问的页面
+发出请求
+当服务端的响应返回，响应函数被调用。
+在响应函数中，判断响应是否成功，如果成功获取服务端返回的文本，并显示在span中。
+
+
+&lt;span>输入</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/前端技术/" class="post-category" target="_blank">
+                                    前端技术
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/AJAX/" target="_blank">
+                        <span class="chip bg-color">AJAX</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScript/" target="_blank">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
