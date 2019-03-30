@@ -5,13 +5,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="22-生成括号, yuzhenzero">
-    <meta name="description" content="题目描述给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
-例如，给出 n = 3，生成结果为：
-[
-  &amp;quot;((()))&amp;quot;,
-  &amp;quot;(()())&amp;quot;,
-  &amp;qu">
+    <meta name="keywords" content="GitHub 提交 PR 简易教程, yuzhenzero">
+    <meta name="description" content="前言GitHub 作为全球最大的同性交友程序员交友社区，最大的魅力就是每个人都能参与开源项目的开发，大到找 BUG，小到修改错别字，都是开源精神的体现。
+最近学习 CyC2018/CS-Notes 仓库的计算机基础知识，结果还真的发现一个错">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>22-生成括号 | yuzhenzero</title>
+    <title>GitHub 提交 PR 简易教程 | yuzhenzero</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -278,13 +274,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        22-生成括号
+                        GitHub 提交 PR 简易教程
                     </div>
                 </div>
             </div>
@@ -397,12 +393,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/回溯算法/" target="_blank">
-                                <span class="chip bg-color">回溯算法</span>
+                            <a href="/tags/GitHub/" target="_blank">
+                                <span class="chip bg-color">GitHub</span>
                             </a>
                         
-                            <a href="/tags/字符串/" target="_blank">
-                                <span class="chip bg-color">字符串</span>
+                            <a href="/tags/开源/" target="_blank">
+                                <span class="chip bg-color">开源</span>
                             </a>
                         
                     </div>
@@ -413,8 +409,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                LeetCode
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                工具
                             </a>
                         
                     </div>
@@ -425,14 +421,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-21
+                    2019-03-30
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        464
+                        520
                     </div>
                     
 
@@ -455,43 +451,33 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给出 <em>n</em> 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且<strong>有效的</strong>括号组合。</p>
-<p>例如，给出 <em>n</em> = 3，生成结果为：</p>
-<pre><code>[
-  &quot;((()))&quot;,
-  &quot;(()())&quot;,
-  &quot;(())()&quot;,
-  &quot;()(())&quot;,
-  &quot;()()()&quot;
-]
-</code></pre><hr>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><h2 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h2><blockquote>
-<p>生成所有 2^{2n} 个 <code>&#39;(&#39;</code> 和 <code>&#39;)&#39;</code> 字符构成的序列。然后，我们将检查每一个是否有效。</p>
-<p>为了检查序列是否为有效的，我们会跟踪<code>平衡</code>，也就是左括号的数量减去右括号的数量的净值。如果这个值始终小于零或者不以零结束，该序列就是无效的，否则它是有效的。</p>
-</blockquote>
-<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p>与暴力破解法比较，回溯法不是无脑添加括号生成序列，而是只有当前的序列是平衡的时候，我们才往序列尾部继续添加<code>&#39;(&#39;</code>或者<code>&#39;)&#39;</code>。我们可以维护两个变量<code>int l</code>和<code>int r</code>来记录当前左括号和右括号的数目，通过左右括号数目的比较，来判断当前序列是否是平衡的。</p>
-<p>如果还有空位，我们可以先放一个左括号；如果右括号的数目不超过左括号的数目，就添加右括号寻求平衡。</p>
-<h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GenerateParentheses</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token function">generateParenthesis</span> <span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        List<span class="token operator">&lt;</span>String<span class="token operator">></span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">backtrack</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backtrack</span> <span class="token punctuation">(</span>List<span class="token operator">&lt;</span>String<span class="token operator">></span> ans<span class="token punctuation">,</span> String cur<span class="token punctuation">,</span> <span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> max<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">*</span> max<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ans<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> max<span class="token punctuation">)</span>
-            <span class="token function">backtrack</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> cur <span class="token operator">+</span> <span class="token string">"("</span><span class="token punctuation">,</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">&lt;</span> l<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 保证平衡</span>
-            <span class="token function">backtrack</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> cur <span class="token operator">+</span> <span class="token string">")"</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> r <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>GitHub 作为全球最大的<del>同性交友</del>程序员交友社区，最大的魅力就是每个人都能参与开源项目的开发，大到找 BUG，小到修改错别字，都是开源精神的体现。</p>
+<p>最近学习 <a href="https://github.com/CyC2018/CS-Notes" target="_blank" rel="noopener">CyC2018/CS-Notes</a> 仓库的计算机基础知识，结果还真的发现一个错别字，在网上教程的帮助下，提了一个 Pull Request，做一个记录，我也是参与过 55k Star 项目的人了。</p>
+<h1 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h1><h2 id="1-Fork-想发起-PR-的项目"><a href="#1-Fork-想发起-PR-的项目" class="headerlink" title="1. Fork 想发起 PR 的项目"></a>1. Fork 想发起 PR 的项目</h2><p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330140625.png" alt=""></p>
+<p>Fork 之后，在自己的账号下会多出一个仓库，仓库下面会多一行字：<code>forked from CyC2018/CS-Notes</code>，如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330140803.png" alt=""></p>
+<p>意思这个仓库就是 CyC2018/CS-Notes 这个原仓库的一个副本，这个副本属于你自己，你在这个副本上进行修改不会影响到原仓库。</p>
+<h2 id="2-把-Fork-过来的项目-Clone-到本地"><a href="#2-把-Fork-过来的项目-Clone-到本地" class="headerlink" title="2. 把 Fork 过来的项目 Clone 到本地"></a>2. 把 Fork 过来的项目 Clone 到本地</h2><p>注意，这里建议把项目 Clone 到本地再进行修改，而不是直接在 GitHub 网页版上进行编辑修改。</p>
+<p>使用命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone git@github.com:yuzhenzero/CS-Notes.git
 </code></pre>
-<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>这一题的回溯算法思想体现在：某一次递归添加括号达到平衡后，需要回到这一次递归的头部，寻找平衡，继续添加括号。</p>
+<p>把项目 Clone 到本地。然后就可以对项目中的文件进行修改了，我找到相应的文档，修改了错别字。</p>
+<h2 id="3-Commit-修改"><a href="#3-Commit-修改" class="headerlink" title="3. Commit 修改"></a>3. Commit 修改</h2><p>使用命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> add docs/notes/HTTP.md
+<span class="token function">git</span> commit -m <span class="token string">'update HTTP.md'</span>
+</code></pre>
+<p>提交修改。</p>
+<h2 id="4-Push-到仓库"><a href="#4-Push-到仓库" class="headerlink" title="4. Push 到仓库"></a>4. Push 到仓库</h2><p>使用命令</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> push origin master
+</code></pre>
+<p>将本地修改的代码 Push 到远程仓库的 master 分支，这个远程仓库就是你 Fork 下来的那一个。</p>
+<h2 id="5-在-GitHub-网站进行-PR"><a href="#5-在-GitHub-网站进行-PR" class="headerlink" title="5. 在 GitHub 网站进行 PR"></a>5. 在 GitHub 网站进行 PR</h2><p>进入你 Fork 下来的那个项目的主页，打开<code>Pull request</code>标签，点击<code>New pull request</code>。</p>
+<p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330142325.png" alt=""></p>
+<p>在跳转的页面点击<code>Create pull request</code>即可（因为此次修改我已经提过 PR 了，所以没有显示这个按钮）。</p>
+<p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330142325.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330143012.png" alt=""></p>
+<p>这个页面可以方便地观察新旧文件的对比，可以看到我修改了一个错别字：「参考」应为「参数」。</p>
+<p>然后就等着原仓库的作者看到这个 PR 并决定接不接受了。</p>
 
             </div>
             <hr/>
@@ -632,7 +618,7 @@
                     </span>
                     <a href="https://yuzhenzero.github.io" class="b-link-green">yuzhenzero</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/21/22-sheng-cheng-gua-hao/" class="b-link-green">22-生成括号</a>
+                    <a href="/2019/03/30/github-ti-jiao-pr-jian-yi-jiao-cheng/" class="b-link-green">GitHub 提交 PR 简易教程</a>
                 </p>
             </div>
         </div>
@@ -654,7 +640,7 @@
         repo: 'blog-gitalk',
         owner: 'yuzhenzero',
         admin: "yuzhenzero",
-        id: '2019-01-21T11-36-22',
+        id: '2019-03-30T14-36-39',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -675,37 +661,79 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/01/22/46-quan-pai-lie/">
+                <a href="/2019/03/30/github-ti-jiao-pr-jian-yi-jiao-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="46-全排列">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="GitHub 提交 PR 简易教程">
                         
-                        <span class="card-title">46-全排列</span>
+                        <span class="card-title">GitHub 提交 PR 简易教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述给定一个没有重复数字的序列，返回其所有可能的全排列。
-示例:
-输入: [1,2,3]
-输出:
-[
-  [1,2,3],
-  [1,3,2],
-  [2,1,3],
-  [2,3,1],
-  [3,1,2],
-  [3,2,1]
-]
-</div>
+                    <div class="summary">前言GitHub 作为全球最大的同性交友程序员交友社区，最大的魅力就是每个人都能参与开源项目的开发，大到找 BUG，小到修改错别字，都是开源精神的体现。
+最近学习 CyC2018/CS-Notes 仓库的计算机基础知识，结果还真的发现一个错</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-22
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GitHub/" target="_blank">
+                        <span class="chip bg-color">GitHub</span>
+                    </a>
+                    
+                    <a href="/tags/开源/" target="_blank">
+                        <span class="chip bg-color">开源</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/29/33-sou-suo-xuan-zhuan-pai-xu-shu-zu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="33-搜索旋转排序数组">
+                        
+                        <span class="card-title">33-搜索旋转排序数组</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
+搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -725,62 +753,8 @@
                         <span class="chip bg-color">数组</span>
                     </a>
                     
-                    <a href="/tags/回溯算法/" target="_blank">
-                        <span class="chip bg-color">回溯算法</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/01/18/17-dian-hua-hao-ma-de-zi-mu-zu-he/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="17-电话号码的字母组合">
-                        
-                        <span class="card-title">17-电话号码的字母组合</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">题目描述给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
-给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
-
-示例:
-输入：&quot;23&quot;
-输出：[&quot;ad&quot;, &qu</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-18
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                    LeetCode
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/递归/" target="_blank">
-                        <span class="chip bg-color">递归</span>
-                    </a>
-                    
-                    <a href="/tags/回溯算法/" target="_blank">
-                        <span class="chip bg-color">回溯算法</span>
+                    <a href="/tags/二分查找/" target="_blank">
+                        <span class="chip bg-color">二分查找</span>
                     </a>
                     
                 </div>

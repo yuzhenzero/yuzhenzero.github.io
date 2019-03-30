@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>GitHub 提交 PR 简易教程</title>
+      <link href="/2019/03/30/github-ti-jiao-pr-jian-yi-jiao-cheng/"/>
+      <url>/2019/03/30/github-ti-jiao-pr-jian-yi-jiao-cheng/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>GitHub 作为全球最大的<del>同性交友</del>程序员交友社区，最大的魅力就是每个人都能参与开源项目的开发，大到找 BUG，小到修改错别字，都是开源精神的体现。</p><p>最近学习 <a href="https://github.com/CyC2018/CS-Notes" target="_blank" rel="noopener">CyC2018/CS-Notes</a> 仓库的计算机基础知识，结果还真的发现一个错别字，在网上教程的帮助下，提了一个 Pull Request，做一个记录，我也是参与过 55k Star 项目的人了。</p><h1 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h1><h2 id="1-Fork-想发起-PR-的项目"><a href="#1-Fork-想发起-PR-的项目" class="headerlink" title="1. Fork 想发起 PR 的项目"></a>1. Fork 想发起 PR 的项目</h2><p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330140625.png" alt=""></p><p>Fork 之后，在自己的账号下会多出一个仓库，仓库下面会多一行字：<code>forked from CyC2018/CS-Notes</code>，如图所示：</p><p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330140803.png" alt=""></p><p>意思这个仓库就是 CyC2018/CS-Notes 这个原仓库的一个副本，这个副本属于你自己，你在这个副本上进行修改不会影响到原仓库。</p><h2 id="2-把-Fork-过来的项目-Clone-到本地"><a href="#2-把-Fork-过来的项目-Clone-到本地" class="headerlink" title="2. 把 Fork 过来的项目 Clone 到本地"></a>2. 把 Fork 过来的项目 Clone 到本地</h2><p>注意，这里建议把项目 Clone 到本地再进行修改，而不是直接在 GitHub 网页版上进行编辑修改。</p><p>使用命令</p><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone git@github.com:yuzhenzero/CS-Notes.git</code></pre><p>把项目 Clone 到本地。然后就可以对项目中的文件进行修改了，我找到相应的文档，修改了错别字。</p><h2 id="3-Commit-修改"><a href="#3-Commit-修改" class="headerlink" title="3. Commit 修改"></a>3. Commit 修改</h2><p>使用命令</p><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> add docs/notes/HTTP.md<span class="token function">git</span> commit -m <span class="token string">'update HTTP.md'</span></code></pre><p>提交修改。</p><h2 id="4-Push-到仓库"><a href="#4-Push-到仓库" class="headerlink" title="4. Push 到仓库"></a>4. Push 到仓库</h2><p>使用命令</p><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> push origin master</code></pre><p>将本地修改的代码 Push 到远程仓库的 master 分支，这个远程仓库就是你 Fork 下来的那一个。</p><h2 id="5-在-GitHub-网站进行-PR"><a href="#5-在-GitHub-网站进行-PR" class="headerlink" title="5. 在 GitHub 网站进行 PR"></a>5. 在 GitHub 网站进行 PR</h2><p>进入你 Fork 下来的那个项目的主页，打开<code>Pull request</code>标签，点击<code>New pull request</code>。</p><p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330142325.png" alt=""></p><p>在跳转的页面点击<code>Create pull request</code>即可（因为此次修改我已经提过 PR 了，所以没有显示这个按钮）。</p><p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330142325.png" alt=""></p><p><img src="https://raw.githubusercontent.com/yuzhenzero/picturebed/master/20190330143012.png" alt=""></p><p>这个页面可以方便地观察新旧文件的对比，可以看到我修改了一个错别字：「参考」应为「参数」。</p><p>然后就等着原仓库的作者看到这个 PR 并决定接不接受了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GitHub </tag>
+            
+            <tag> 开源 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>33-搜索旋转排序数组</title>
       <link href="/2019/03/29/33-sou-suo-xuan-zhuan-pai-xu-shu-zu/"/>
       <url>/2019/03/29/33-sou-suo-xuan-zhuan-pai-xu-shu-zu/</url>
