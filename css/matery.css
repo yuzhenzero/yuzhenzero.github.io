@@ -162,11 +162,11 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #8E44AD 0%, #9B59B6 100%);
+    background-image: linear-gradient(to right, #2c3e50 0%, #34495e 100%);
 }
 
 .text-color {
-    color: #9B59B6 !important;
+    color: #34495e !important;
 }
 
 .white-color {
@@ -193,7 +193,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #8E44AD 0%, #9B59B6 100%);
+    background: linear-gradient(to right, #2c3e50 0%, #34495e 100%);
     opacity: 0.8;
 }
 
@@ -651,7 +651,7 @@ article a {
 
 article a:hover {
     font-weight: bold;
-    color: #9B59B6;
+    color: #34495e;
     text-decoration: underline;
 }
 
@@ -819,12 +819,12 @@ article .article-tags .chip {
 
 #artDetail .post-cate {
     float: right;
-    color: #9B59B6;
+    color: #34495e;
 }
 
 #artDetail .post-cate a {
     padding-right: 5px;
-    color: #9B59B6;
+    color: #34495e;
     font-weight: 500;
 }
 
@@ -843,7 +843,7 @@ article .article-tags .chip {
 
 #artDetail .post-info .post-category:hover {
     font-weight: bold;
-    color: #9B59B6;
+    color: #34495e;
     text-decoration: underline;
 }
 
@@ -900,7 +900,7 @@ article .article-tags .chip {
 
 #artDetail .reprint a {
     font-size: 1.05rem;
-    color: #9B59B6;
+    color: #34495e;
     font-weight: 500;
 }
 
@@ -916,7 +916,7 @@ article .article-tags .chip {
 
 #articleContent a {
     padding: 0 2px;
-    color: #9B59B6;
+    color: #2980b9;
     font-weight: 500;
     text-decoration: underline;
     word-wrap:break-word;
@@ -1116,7 +1116,7 @@ table tr:nth-child(2n), thead {
     left: 18px;
     height: 100%;
     width: 4px;
-    background: #9B59B6;
+    background: #34495e;
 }
 
 @media only screen and (min-width: 900px) {
@@ -1331,7 +1331,7 @@ table tr:nth-child(2n), thead {
 }
 
 .post-statis .statis .count a {
-    color: #9B59B6;
+    color: #34495e;
 }
 
 .post-statis .statis .name {
@@ -1352,8 +1352,8 @@ table tr:nth-child(2n), thead {
     margin: 0 0.5rem;
     padding: 0;
     color: #fff;
-    border: 1px solid #9B59B6;
-    background: radial-gradient(#8E44AD, #9B59B6);;
+    border: 1px solid #34495e;
+    background: radial-gradient(#2c3e50, #34495e);;
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1528,8 +1528,8 @@ table tr:nth-child(2n), thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #8E44AD 0%, #9B59B6 100%);;
-    border: 1px solid #8E44AD;
+    background: linear-gradient(to right, #2c3e50 0%, #34495e 100%);;
+    border: 1px solid #2c3e50;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
 
@@ -1595,7 +1595,7 @@ footer .copy-right {
 
 .search-result-list .search-result-title {
     font-size: 1.4rem;
-    color: #9B59B6;
+    color: #34495e;
 }
 
 .search-result-list li {
@@ -1625,7 +1625,7 @@ footer .copy-right {
 }
 
 .top-scroll .btn-floating {
-    background: linear-gradient(to bottom, #8E44AD 0%, #9B59B6 100%);
+    background: linear-gradient(to bottom, #2c3e50 0%, #34495e 100%);
     width: 48px;
     height: 48px;
 }
