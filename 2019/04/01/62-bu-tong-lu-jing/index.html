@@ -5,18 +5,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello AJAX 分步解析, yuzhenzero">
-    <meta name="description" content="0. AJAX 请求和相应图示
+    <meta name="keywords" content="62-不同路径, yuzhenzero">
+    <meta name="description" content="题目描述一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+问总共有多少条不同的路径？
 
-创建XHR对象
-设置响应函数
-设置要访问的页面
-发出请求
-当服务端的响应返回，响应函数被调用。
-在响应函数中，判断响应是否成功，如果成功获取服务端返回的文本，并显示在span中。
-
-
-&amp;lt;span&gt;输入">
+例如，上图是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello AJAX 分步解析 | yuzhenzero</title>
+    <title>62-不同路径 | yuzhenzero</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -283,13 +277,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello AJAX 分步解析
+                        62-不同路径
                     </div>
                 </div>
             </div>
@@ -402,12 +396,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/AJAX/" target="_blank">
-                                <span class="chip bg-color">AJAX</span>
+                            <a href="/tags/二维数组/" target="_blank">
+                                <span class="chip bg-color">二维数组</span>
                             </a>
                         
-                            <a href="/tags/JavaScript/" target="_blank">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/动态规划/" target="_blank">
+                                <span class="chip bg-color">动态规划</span>
                             </a>
                         
                     </div>
@@ -418,8 +412,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/前端技术/" class="post-category" target="_blank">
-                                前端技术
+                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
+                                LeetCode
                             </a>
                         
                     </div>
@@ -430,14 +424,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-15
+                    2019-04-01
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        608
+                        575
                     </div>
                     
 
@@ -460,87 +454,49 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="0-AJAX-请求和相应图示"><a href="#0-AJAX-请求和相应图示" class="headerlink" title="0. AJAX 请求和相应图示"></a>0. AJAX 请求和相应图示</h1><blockquote>
-<ol>
-<li>创建XHR对象</li>
-<li>设置响应函数</li>
-<li>设置要访问的页面</li>
-<li>发出请求</li>
-<li>当服务端的响应返回，响应函数被调用。</li>
-<li>在响应函数中，判断响应是否成功，如果成功获取服务端返回的文本，并显示在span中。</li>
-</ol>
-</blockquote>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>span<span class="token operator">></span>输入账号 <span class="token punctuation">:</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
-<span class="token operator">&lt;</span>input id<span class="token operator">=</span><span class="token string">"name"</span> name<span class="token operator">=</span><span class="token string">"name"</span> onkeyup<span class="token operator">=</span><span class="token string">"check()"</span> type<span class="token operator">=</span><span class="token string">"text"</span><span class="token operator">></span> 
-<span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"checkResult"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一个机器人位于一个 <em>m x n</em> 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>问总共有多少条不同的路径？</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/robot_maze.png" alt="img"></p>
+<p>例如，上图是一个7 x 3 的网格。有多少可能的路径？</p>
+<p><strong>说明：</strong> <em>m</em> 和 <em>n</em> 的值均不超过 100。</p>
+<p><strong>示例 1:</strong></p>
+<pre><code>输入: m = 3, n = 2
+输出: 3
+解释:
+从左上角开始，总共有 3 条路径可以到达右下角。
+1. 向右 -&gt; 向右 -&gt; 向下
+2. 向右 -&gt; 向下 -&gt; 向右
+3. 向下 -&gt; 向右 -&gt; 向右
+</code></pre><p><strong>示例 2:</strong></p>
+<pre><code>输入: m = 7, n = 3
+输出: 28
+</code></pre><hr>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>和爬楼梯问题的思路类似，使用动态规划法解决。</p>
+<p>设到达终点的路径数目为<code>F(m,n)</code>，<code>F(m,n)</code>只与前两个状态有关，即走到<code>(m,n)</code>点的路径数等于走到<code>(m-1,n)</code>的路径数加上走到<code>(m,n-1)</code>的路径数目，用<strong>递推公式</strong>表示就是<code>F(m,n) = F(m-1,n)+F(m,n-1)</code>。</p>
+<p>想要知道<code>F(m-1,n)</code>就要知道<code>F(m-2,n)</code>和<code>F(m-1,n-1)</code>，同理，想要知道<code>F(m,n-1)</code>就要知道<code>F(m-1,n-1)</code>和<code>F(m,n-2)</code>，如此递推下去，到边缘，我们知道了<code>F(0,0)</code>,<code>F(0,1)</code>,<code>F(1,0)</code>就可以知道所有的 F 值。而我们可以直接得到：</p>
+<pre><code>F(0,0) = 1;
+F(0,1) = 1;
+F(1,0) = 1;
+</code></pre><p>因为机器人只能向下或者向右走，所以实际上<code>F(0,n) = 1</code>以及<code>F(m,0) = 1</code>，这就是初始化条件。我们再自底向上解决问题，使用一个二维数组存放 F 值，直到得到最后的<code>F(m,n)</code>。</p>
+<h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">uniquePaths</span> <span class="token punctuation">(</span><span class="token keyword">int</span> m<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<span class="token operator">&lt;</span>script<span class="token operator">></span>
-<span class="token keyword">var</span> xmlhttp<span class="token punctuation">;</span>
-<span class="token keyword">function</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">var</span> name <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
-  <span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">"http://how2j.cn/study/checkName.jsp?name="</span><span class="token operator">+</span>name<span class="token punctuation">;</span>
-
-  xmlhttp <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  xmlhttp<span class="token punctuation">.</span>onreadystatechange<span class="token operator">=</span>checkResult<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//响应函数</span>
-  xmlhttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span>url<span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//设置访问的页面</span>
-  xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//执行访问</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">checkResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>xmlhttp<span class="token punctuation">.</span>readyState<span class="token operator">==</span><span class="token number">4</span> <span class="token operator">&amp;&amp;</span> xmlhttp<span class="token punctuation">.</span>status<span class="token operator">==</span><span class="token number">200</span><span class="token punctuation">)</span>
-    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'checkResult'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML<span class="token operator">=</span>xmlhttp<span class="token punctuation">.</span>responseText<span class="token punctuation">;</span>
-
-<span class="token punctuation">}</span>
-
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
-<p><img src="http://stepimagewm.how2j.cn/1232.png" alt=""></p>
-<h1 id="1-创建-XHR-对象"><a href="#1-创建-XHR-对象" class="headerlink" title="1. 创建 XHR 对象"></a>1. 创建 XHR 对象</h1><p>XHR 对象：<strong>X</strong>ML<strong>H</strong>ttp<strong>R</strong>equest</p>
-<p>XHR对象是一个javascript对象，它可以在用户没有感觉的情况下，就像背后运行的一根小线程一般，<strong>悄悄的</strong>和服务器进行数据交互。AJAX就是通过它做到无刷新效果的。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
-<span class="token keyword">var</span> xmlhttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>xmlhttp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
-<h1 id="2-设置响应函数"><a href="#2-设置响应函数" class="headerlink" title="2. 设置响应函数"></a>2. 设置响应函数</h1><p>XHR对象的作用是和服务器进行交互，所以既会发消息给服务器，也能接受服务器返回的响应。<br>当服务器响应回来的时候，调用怎么处理呢？<br>通过 <code>xmlhttp.onreadystatechange=checkResult</code> 就可以指定用<code>checkResult</code>函数进行处理。</p>
-<h1 id="3-设置并发出请求"><a href="#3-设置并发出请求" class="headerlink" title="3. 设置并发出请求"></a>3. 设置并发出请求</h1><p>通过open函数设置背后的这个小线程，将要访问的页面url ，在本例中就是<br><code>/study/checkName.jsp</code></p>
-<pre class=" language-javascript"><code class="language-javascript">xmlhttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span>url<span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>通过send函数进行实际的访问</p>
-<pre class=" language-javascript"><code class="language-javascript">xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p><code>null</code>表示没有参数，因为参数已经通过<code>GET</code> 方式，放在 url 里了。只有在用”POST”，并且需要发送参数的时候，才会使用到send。<br>类似这样：</p>
-<pre class=" language-javascript"><code class="language-javascript">xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"user="</span><span class="token operator">+</span>username<span class="token operator">+</span><span class="token string">"&amp;password="</span><span class="token operator">+</span>password<span class="token punctuation">)</span>
-</code></pre>
-<h1 id="4-处理响应信息"><a href="#4-处理响应信息" class="headerlink" title="4. 处理响应信息"></a>4. 处理响应信息</h1><p>在 checkResult 函数中处理响应</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">checkResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>xmlhttp<span class="token punctuation">.</span>readyState<span class="token operator">==</span><span class="token number">4</span> <span class="token operator">&amp;&amp;</span> xmlhttp<span class="token punctuation">.</span>status<span class="token operator">==</span><span class="token number">200</span><span class="token punctuation">)</span>  
-     document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'checkResult'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML<span class="token operator">=</span>xmlhttp<span class="token punctuation">.</span>responseText<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> matrix<span class="token punctuation">[</span>m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<blockquote>
-<p>xmlhttp.<strong>readyState</strong> 4 表示请求已完成<br>xmlhttp.<strong>status</strong> 200 表示响应成功<br>xmlhttp.<strong>responseText</strong>; 用于获取服务端传回来的文本<br>document.getElementById(‘checkResult’).<strong>innerHTML</strong> 设置span的内容为服务端传递回来的文本</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">属性</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">readyState(存有 XMLHttpRequest 的状态)</td>
-<td>0：请求未初始化<br>1：服务器连接已建立<br>2：请求已接受<br>3：请求处理中<br>4：请求已完成，且响应已就绪</td>
-</tr>
-<tr>
-<td style="text-align:left">status</td>
-<td>200： “OK”<br>404：未找到页面</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><a href="http://how2j.cn/k/ajax/ajax-stepbystep/466.html" target="_blank" rel="noopener">参考教程</a></p>
+<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>本题实际上就是爬楼梯问题的二维化，关于爬楼梯问题，可以参考我之前写过的<a href="https://github.com/yuzhenzero/leetcode/blob/master/Note/%E5%88%9D%E7%BA%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md" target="_blank" rel="noopener">一篇文章</a>。</p>
 
             </div>
             <hr/>
@@ -681,7 +637,7 @@ document<span class="token punctuation">.</span><span class="token function">wri
                     </span>
                     <a href="https://yuzhenzero.github.io" class="b-link-green">yuzhenzero</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/15/hello-ajax/" class="b-link-green">Hello AJAX 分步解析</a>
+                    <a href="/2019/04/01/62-bu-tong-lu-jing/" class="b-link-green">62-不同路径</a>
                 </p>
             </div>
         </div>
@@ -703,7 +659,7 @@ document<span class="token punctuation">.</span><span class="token function">wri
         repo: 'blog-gitalk',
         owner: 'yuzhenzero',
         admin: "yuzhenzero",
-        id: '2019-03-15T20-55-35',
+        id: '2019-04-01T14-15-09',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -724,33 +680,30 @@ document<span class="token punctuation">.</span><span class="token function">wri
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/03/29/240-sou-suo-er-wei-ju-zhen-2/">
+                <a href="/2019/04/01/62-bu-tong-lu-jing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="240-搜索二维矩阵2">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="62-不同路径">
                         
-                        <span class="card-title">240-搜索二维矩阵2</span>
+                        <span class="card-title">62-不同路径</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：
+                    <div class="summary">题目描述一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+问总共有多少条不同的路径？
 
-每行的元素从左到右升序排列。
-每列的元素从上到下升序排列。
-
-示例:
-现有矩阵 matrix 如下：
-[
-  [1,  </div>
+例如，上图是</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -763,6 +716,7 @@ document<span class="token punctuation">.</span><span class="token function">wri
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -770,8 +724,8 @@ document<span class="token punctuation">.</span><span class="token function">wri
                         <span class="chip bg-color">二维数组</span>
                     </a>
                     
-                    <a href="/tags/搜索/" target="_blank">
-                        <span class="chip bg-color">搜索</span>
+                    <a href="/tags/动态规划/" target="_blank">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
                 </div>
@@ -785,24 +739,26 @@ document<span class="token punctuation">.</span><span class="token function">wri
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/15/56-he-bing-qu-jian/">
+                <a href="/2019/04/01/55-tiao-yue-you-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="56-合并区间">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="55-跳跃游戏">
                         
-                        <span class="card-title">56-合并区间</span>
+                        <span class="card-title">55-跳跃游戏</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述给出一个区间的集合，请合并所有重叠的区间。
+                    <div class="summary">题目描述给定一个非负整数数组，你最初位于数组的第一个位置。
+数组中的每个元素代表你在该位置可以跳跃的最大长度。
+判断你是否能够到达最后一个位置。
 示例 1:
-输入: [[1,3],[2,6],[8,10],[15,18]]
-输出: [[1,6],[8,10],[15,18]]
-解释: 区间 [1,3] 和 [2,6] 重叠, 将它们</div>
+输入: [2,3,1,1,4]
+输出: true
+解释: 从位置 0 到 1 跳 </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-01
                             </span>
                         <span class="publish-author">
                             
@@ -819,12 +775,12 @@ document<span class="token punctuation">.</span><span class="token function">wri
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/排序/" target="_blank">
-                        <span class="chip bg-color">排序</span>
+                    <a href="/tags/数组/" target="_blank">
+                        <span class="chip bg-color">数组</span>
                     </a>
                     
-                    <a href="/tags/比较器/" target="_blank">
-                        <span class="chip bg-color">比较器</span>
+                    <a href="/tags/贪心算法/" target="_blank">
+                        <span class="chip bg-color">贪心算法</span>
                     </a>
                     
                 </div>
