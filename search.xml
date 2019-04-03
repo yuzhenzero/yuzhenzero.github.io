@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>300-最长上升子序列</title>
+      <link href="/2019/04/03/300-zui-chang-shang-sheng-zi-xu-lie/"/>
+      <url>/2019/04/03/300-zui-chang-shang-sheng-zi-xu-lie/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个无序的整数数组，找到其中最长上升子序列的长度。</p><p><strong>示例:</strong></p><pre><code>输入: [10,9,2,5,3,7,101,18]输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。</code></pre><p><strong>说明:</strong></p><ul><li>可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。</li><li>你算法的时间复杂度应该为 O(<em>n2</em>) 。</li></ul><p><strong>进阶:</strong> 你能将算法的时间复杂度降低到 O(<em>n</em> log <em>n</em>) 吗?</p><hr><h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>利用动态规划和二分查找解题。</p><p>遍历一遍数组，<code>dp[]</code>表示目前为止的上升子序列（不一定是最长），通过二分查找，找到当前元素在<code>dp[]</code>中的位置，如果为负值，则说明该元素比<code>dp[]</code>中所有元素都小，索引值要相应处理一下，然后原地替换；如果为正值，说明该元素比<code>dp[]</code>中所有元素都大，则加入尾部，顺便<code>len++</code>。</p><h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">lengthOfLIS</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>nums<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">int</span> i <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">binarySearch</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">,</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> num<span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> len<span class="token punctuation">)</span> len<span class="token operator">++</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token keyword">return</span> len<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h2 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h2><p>JDK 中数组二分查找的用法：</p><blockquote><pre><code>public static int binarySearch(int[] a,            int fromIndex,            int toIndex,            int key)</code></pre><p>Searches a range of the specified array of ints for the specified value using the binary search algorithm. The range must be sorted (as by the <a href="https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html#sort(int[],%20int,%20int" target="_blank" rel="noopener"><code>sort(int[\], int, int)</code></a>) method) prior to making this call. If it is not sorted, the results are undefined. If the range contains multiple elements with the specified value, there is no guarantee which one will be found.</p><ul><li><strong>Parameters:</strong></li></ul><p><code>a</code> - the array to be searched</p><p><code>fromIndex</code> - the index of the first element (inclusive) to be searched</p><p><code>toIndex</code> - the index of the last element (exclusive) to be searched</p><p><code>key</code> - the value to be searched for</p><ul><li><strong>Returns:</strong></li></ul><p>index of the search key, if it is contained in the array within the specified range; otherwise, <code>(-(*insertion point*) - 1)</code>. The <em>insertion point</em> is defined as the point at which the key would be inserted into the array: the index of the first element in the range greater than the key, or <code>toIndex</code> if all elements in the range are less than the specified key. Note that this guarantees that the return value will be &gt;= 0 if and only if the key is found.</p><ul><li><strong>Throws:</strong></li></ul><p><code>IllegalArgumentException</code> - if <code>fromIndex &gt; toIndex</code></p><p><code>ArrayIndexOutOfBoundsException</code> - if <code>fromIndex &lt; 0 or toIndex &gt; a.length</code></p><ul><li><strong>Since:</strong></li></ul><p>1.6</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 动态规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>322-零钱兑换</title>
+      <link href="/2019/04/03/322-ling-qian-dui-huan/"/>
+      <url>/2019/04/03/322-ling-qian-dui-huan/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 <code>-1</code>。</p><p><strong>示例 1:</strong></p><pre><code>输入: coins = [1, 2, 5], amount = 11输出: 3 解释: 11 = 5 + 5 + 1</code></pre><p><strong>示例 2:</strong></p><pre><code>输入: coins = [2], amount = 3输出: -1</code></pre><hr><h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><ul><li><p>自顶向下找一下规律<br><img src="https://blogpicture-yz-1257609930.cos.ap-shanghai.myqcloud.com/20190403101832.png" alt=""></p></li><li><p>状态转移方程<br><code>F(i) = min{F(i - c_j)} + 1,j = 0...n-1</code></p></li><li><p>自底向上解决问题<br>其中 F(0) = 0</p><p><img src="https://blogpicture-yz-1257609930.cos.ap-shanghai.myqcloud.com/20190403101609.png" alt=""></p></li></ul><h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">coinChange</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> coins<span class="token punctuation">,</span> <span class="token keyword">int</span> amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>amount <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    Arrays<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span> amount <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> amount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> coin <span class="token operator">:</span> coins<span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>coin <span class="token operator">&lt;=</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> coin<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token keyword">return</span> dp<span class="token punctuation">[</span>amount<span class="token punctuation">]</span> <span class="token operator">></span> amount <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">:</span> dp<span class="token punctuation">[</span>amount<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>这是一道典型的动态规划的题目。先自顶向下找到规律，再通过状态转移方程描述这个规律，最后使用自底向上简化时间复杂度。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 动态规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>62-不同路径</title>
       <link href="/2019/04/01/62-bu-tong-lu-jing/"/>
       <url>/2019/04/01/62-bu-tong-lu-jing/</url>
@@ -20,9 +74,9 @@
       
         <tags>
             
-            <tag> 二维数组 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 二维数组 </tag>
             
         </tags>
       
@@ -612,9 +666,9 @@
       
         <tags>
             
-            <tag> 字符串 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 字符串 </tag>
             
         </tags>
       

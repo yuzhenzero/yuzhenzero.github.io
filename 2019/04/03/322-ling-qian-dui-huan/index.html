@@ -5,20 +5,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="46-全排列, yuzhenzero">
-    <meta name="description" content="题目描述给定一个没有重复数字的序列，返回其所有可能的全排列。
-示例:
-输入: [1,2,3]
-输出:
-[
-  [1,2,3],
-  [1,3,2],
-  [2,1,3],
-  [2,3,1],
-  [3,1,2],
-  [3,2,1]
-]
-">
+    <meta name="keywords" content="322-零钱兑换, yuzhenzero">
+    <meta name="description" content="题目描述给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
+示例 1:
+输入: coins = [1, 2, 5], amou">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>46-全排列 | yuzhenzero</title>
+    <title>322-零钱兑换 | yuzhenzero</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -285,13 +275,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        46-全排列
+                        322-零钱兑换
                     </div>
                 </div>
             </div>
@@ -408,8 +398,8 @@
                                 <span class="chip bg-color">数组</span>
                             </a>
                         
-                            <a href="/tags/回溯算法/" target="_blank">
-                                <span class="chip bg-color">回溯算法</span>
+                            <a href="/tags/动态规划/" target="_blank">
+                                <span class="chip bg-color">动态规划</span>
                             </a>
                         
                     </div>
@@ -432,14 +422,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-22
+                    2019-04-03
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        359
+                        257
                     </div>
                     
 
@@ -462,55 +452,39 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个<strong>没有重复</strong>数字的序列，返回其所有可能的全排列。</p>
-<p><strong>示例:</strong></p>
-<pre><code>输入: [1,2,3]
-输出:
-[
-  [1,2,3],
-  [1,3,2],
-  [2,1,3],
-  [2,3,1],
-  [3,1,2],
-  [3,2,1]
-]
+                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 <code>-1</code>。</p>
+<p><strong>示例 1:</strong></p>
+<pre><code>输入: coins = [1, 2, 5], amount = 11
+输出: 3 
+解释: 11 = 5 + 5 + 1
+</code></pre><p><strong>示例 2:</strong></p>
+<pre><code>输入: coins = [2], amount = 3
+输出: -1
 </code></pre><hr>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p>设置一个指针<code>first</code>表示当前正在处理的元素，<code>n</code>表示数组<code>nums</code>的长度。</p>
-<ul>
-<li>如果<code>first == n</code>表示此时的全排列已经完成，把此时的列表加入到结果列表</li>
-<li>对数组从索引<code>first</code>到<code>n-1</code>进行遍历<ul>
-<li>将<code>nums[first]</code>与<code>nums[i]</code>进行交换</li>
-<li>继续（递归地）进行交换处理，接下来<code>backtrack(first + 1)</code></li>
-<li>得到一组全排列后，要将数组恢复成交换之前的样子，以免在获取下一组全排列的过程中出错</li>
-</ul>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><ul>
+<li><p>自顶向下找一下规律<br><img src="https://blogpicture-yz-1257609930.cos.ap-shanghai.myqcloud.com/20190403101832.png" alt=""></p>
+</li>
+<li><p>状态转移方程<br><code>F(i) = min{F(i - c_j)} + 1,j = 0...n-1</code></p>
+</li>
+<li><p>自底向上解决问题<br>其中 F(0) = 0</p>
+<p><img src="https://blogpicture-yz-1257609930.cos.ap-shanghai.myqcloud.com/20190403101609.png" alt=""></p>
 </li>
 </ul>
-<h3 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>Integer<span class="token operator">>></span> <span class="token function">permute</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>Integer<span class="token operator">>></span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> curList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        curList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">coinChange</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> coins<span class="token punctuation">,</span> <span class="token keyword">int</span> amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>amount <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    Arrays<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span> amount <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> amount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> coin <span class="token operator">:</span> coins<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>coin <span class="token operator">&lt;=</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> coin<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-    <span class="token function">backtrack</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> curList<span class="token punctuation">,</span> n<span class="token punctuation">,</span> ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backtrack</span> <span class="token punctuation">(</span><span class="token keyword">int</span> first<span class="token punctuation">,</span> ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> curList<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>Integer<span class="token operator">>></span> ans<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>first <span class="token operator">==</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        ans<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">(</span>curList<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> first<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Collections<span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>curList<span class="token punctuation">,</span> first<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">backtrack</span><span class="token punctuation">(</span>first <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> curList<span class="token punctuation">,</span> n<span class="token punctuation">,</span> ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Collections<span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>curList<span class="token punctuation">,</span> first<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 回溯，使数组回到原来的样子重新操作</span>
-    <span class="token punctuation">}</span>
-
+    <span class="token keyword">return</span> dp<span class="token punctuation">[</span>amount<span class="token punctuation">]</span> <span class="token operator">></span> amount <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">:</span> dp<span class="token punctuation">[</span>amount<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>这一题的回溯算法体现在：交换完获得一组全排列后，要及时将数组交换回去，保持原样给下一次交换操作使用。</p>
+<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>这是一道典型的动态规划的题目。先自顶向下找到规律，再通过状态转移方程描述这个规律，最后使用自底向上简化时间复杂度。</p>
 
             </div>
             <hr/>
@@ -651,7 +625,7 @@
                     </span>
                     <a href="https://yuzhenzero.github.io" class="b-link-green">yuzhenzero</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/22/46-quan-pai-lie/" class="b-link-green">46-全排列</a>
+                    <a href="/2019/04/03/322-ling-qian-dui-huan/" class="b-link-green">322-零钱兑换</a>
                 </p>
             </div>
         </div>
@@ -673,7 +647,7 @@
         repo: 'blog-gitalk',
         owner: 'yuzhenzero',
         admin: "yuzhenzero",
-        id: '2019-01-22T11-35-22',
+        id: '2019-04-03T10-56-10',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -698,29 +672,27 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/23/78-zi-ji/">
+                <a href="/2019/04/03/300-zui-chang-shang-sheng-zi-xu-lie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="78-子集">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="300-最长上升子序列">
                         
-                        <span class="card-title">78-子集</span>
+                        <span class="card-title">300-最长上升子序列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述给定一组不含重复元素的整数数组  nums，返回该数组所有可能的子集（幂集）。
-说明：解集不能包含重复的子集。
+                    <div class="summary">题目描述给定一个无序的整数数组，找到其中最长上升子序列的长度。
 示例:
-输入: nums = [1,2,3]
-输出:
-[
-  [3],
-  [1],
-  [2],
-  [1,2,3],</div>
+输入: [10,9,2,5,3,7,101,18]
+输出: 4 
+解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
+说明:
+
+可能会有多种最长上升子</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-23
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-03
                         </span>
                         <span class="publish-author">
                             
@@ -741,8 +713,8 @@
                         <span class="chip bg-color">数组</span>
                     </a>
                     
-                    <a href="/tags/回溯算法/" target="_blank">
-                        <span class="chip bg-color">回溯算法</span>
+                    <a href="/tags/动态规划/" target="_blank">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
                 </div>
@@ -756,25 +728,24 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/21/22-sheng-cheng-gua-hao/">
+                <a href="/2019/04/01/62-bu-tong-lu-jing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="22-生成括号">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="62-不同路径">
                         
-                        <span class="card-title">22-生成括号</span>
+                        <span class="card-title">62-不同路径</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
-例如，给出 n = 3，生成结果为：
-[
-  &quot;((()))&quot;,
-  &quot;(()())&quot;,
-  &qu</div>
+                    <div class="summary">题目描述一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+问总共有多少条不同的路径？
+
+例如，上图是</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-01
                             </span>
                         <span class="publish-author">
                             
@@ -791,12 +762,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/回溯算法/" target="_blank">
-                        <span class="chip bg-color">回溯算法</span>
+                    <a href="/tags/动态规划/" target="_blank">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
-                    <a href="/tags/字符串/" target="_blank">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/二维数组/" target="_blank">
+                        <span class="chip bg-color">二维数组</span>
                     </a>
                     
                 </div>
