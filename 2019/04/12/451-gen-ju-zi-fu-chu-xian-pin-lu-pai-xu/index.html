@@ -5,14 +5,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="142-环形链表2, yuzhenzero">
-    <meta name="description" content="题目描述给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
-说明：不允许修改给定的链表。
-进阶： 你是否可以不用额外空间解决此题？
+    <meta name="keywords" content="451-根据字符出现频率排序, yuzhenzero">
+    <meta name="description" content="题目描述给定一个字符串，请将字符串里的字符按照出现的频率降序排列。
+示例 1:
+输入:
+&amp;quot;tree&amp;quot;
 
-分析使用双指针可以解决该问题。
+输出:
+&amp;quot;eert&amp;quot;
 
-链表没有环的判定可以参考第141题，环形链表">
+解释:
+&amp;#39;e&amp;#39;出现两次，&amp;#39;r&amp;#39;和&amp;#39">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +23,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>142-环形链表2 | yuzhenzero</title>
+    <title>451-根据字符出现频率排序 | yuzhenzero</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -279,13 +282,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        142-环形链表2
+                        451-根据字符出现频率排序
                     </div>
                 </div>
             </div>
@@ -398,8 +401,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/链表/" target="_blank">
-                                <span class="chip bg-color">链表</span>
+                            <a href="/tags/字符串/" target="_blank">
+                                <span class="chip bg-color">字符串</span>
+                            </a>
+                        
+                            <a href="/tags/桶排序/" target="_blank">
+                                <span class="chip bg-color">桶排序</span>
+                            </a>
+                        
+                            <a href="/tags/排序/" target="_blank">
+                                <span class="chip bg-color">排序</span>
+                            </a>
+                        
+                            <a href="/tags/HashMap/" target="_blank">
+                                <span class="chip bg-color">HashMap</span>
                             </a>
                         
                     </div>
@@ -422,14 +437,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-09-06
+                    2019-04-12
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        463
+                        361
                     </div>
                     
 
@@ -452,58 +467,64 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 <code>null</code>。</p>
-<p><strong>说明：</strong>不允许修改给定的链表。</p>
-<p><strong>进阶：</strong><br> 你是否可以不用额外空间解决此题？</p>
-<hr>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>使用双指针可以解决该问题。</p>
-<ul>
-<li>链表没有环的判定可以参考第141题，<a href="https://leetcode-cn.com/problems/linked-list-cycle/description/" target="_blank" rel="noopener">环形链表</a>。</li>
-</ul>
-<p>现在在链表有环的情况下分析。设一个快指针和一个慢指针，这两个指针的初始位置都在<code>head</code>，慢指针移动速度为1，快指针是它的两倍。</p>
-<p><img src="http://wx1.sinaimg.cn/mw690/75129fb1gy1fuzmg2fibzj21kw0u07wi.jpg" alt="1536201429258"></p>
-<p>如图，设从<code>head</code>到环形开始结点的距离是A，慢指针从环形开始结点走到相遇点走过的路程是B，环的长度是L（画图的时候漏掉了，图中没有标示出来）。于是有：</p>
-<ul>
-<li>对慢指针，从<code>head</code>走到<code>meet</code>的距离为A+B</li>
-<li>对快指针，从<code>head</code>走到<code>meet</code>的距离为2A+2B（因为快指针的速度是慢指针的两倍，而在相遇时它们走了相同的时间）</li>
-<li>相遇时，慢指针被快指针套了一圈，即快指针比慢指针多走一圈</li>
-</ul>
-<p>根据以上分析我们可以列一个等式：<code>A+B+L = 2A+2B</code>，可以解得<code>L = A + B</code>。从这个结果可以看出，<code>meet</code>到<code>begin</code>的距离也是A。这意味着，如果我们分别放两个指针在<code>head</code>和<code>meet</code>，让它们以相同的速度前进，它们第一次相遇的地方就是我们要找的环形开始结点。</p>
-<h1 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h1><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> ListNode <span class="token function">detectCycle</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> null<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
-        ListNode fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
-        ListNode slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
+                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个字符串，请将字符串里的字符按照出现的频率降序排列。</p>
+<p><strong>示例 1:</strong></p>
+<pre><code>输入:
+&quot;tree&quot;
 
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> null<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>fast <span class="token operator">==</span> slow<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
-                <span class="token keyword">while</span> <span class="token punctuation">(</span>slow <span class="token operator">!=</span> fast<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-                    fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                <span class="token keyword">return</span> slow<span class="token punctuation">;</span>
+输出:
+&quot;eert&quot;
+
+解释:
+&#39;e&#39;出现两次，&#39;r&#39;和&#39;t&#39;都只出现一次。
+因此&#39;e&#39;必须出现在&#39;r&#39;和&#39;t&#39;之前。此外，&quot;eetr&quot;也是一个有效的答案。
+</code></pre><p><strong>示例 2:</strong></p>
+<pre><code>输入:
+&quot;cccaaa&quot;
+
+输出:
+&quot;cccaaa&quot;
+
+解释:
+&#39;c&#39;和&#39;a&#39;都出现三次。此外，&quot;aaaccc&quot;也是有效的答案。
+注意&quot;cacaca&quot;是不正确的，因为相同的字母必须放在一起。
+</code></pre><p><strong>示例 3:</strong></p>
+<pre><code>输入:
+&quot;Aabb&quot;
+
+输出:
+&quot;bbAa&quot;
+
+解释:
+此外，&quot;bbaA&quot;也是一个有效的答案，但&quot;Aabb&quot;是不正确的。
+注意&#39;A&#39;和&#39;a&#39;被认为是两种不同的字符。
+</code></pre><hr>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>使用桶排序，和<a href="https://leetcode-cn.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">第 347 题</a>思路基本一致，区别就是，第 347 题是对动态数组的操作，本题是对字符串的操作。</p>
+<h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> String <span class="token function">frequencySort</span> <span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    HashMap<span class="token operator">&lt;</span>Character<span class="token punctuation">,</span>Integer<span class="token operator">></span> frequencyMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> s<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        frequencyMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> frequencyMap<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    List<span class="token operator">&lt;</span>Character<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> bucket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">[</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>Character character <span class="token operator">:</span> frequencyMap<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> frequency <span class="token operator">=</span> frequencyMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>character<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>frequency<span class="token punctuation">]</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            bucket<span class="token punctuation">[</span>frequency<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        bucket<span class="token punctuation">[</span>frequency<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>character<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    StringBuilder ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> bucket<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> null<span class="token punctuation">)</span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>Character character <span class="token operator">:</span> bucket<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                ans<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>character<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 
@@ -646,7 +667,7 @@
                     </span>
                     <a href="https://yuzhenzero.github.io" class="b-link-green">yuzhenzero</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/09/06/142-huan-xing-lian-biao-2/" class="b-link-green">142-环形链表2</a>
+                    <a href="/2019/04/12/451-gen-ju-zi-fu-chu-xian-pin-lu-pai-xu/" class="b-link-green">451-根据字符出现频率排序</a>
                 </p>
             </div>
         </div>
@@ -668,7 +689,7 @@
         repo: 'blog-gitalk',
         owner: 'yuzhenzero',
         admin: "yuzhenzero",
-        id: '2018-09-06T11-01-53',
+        id: '2019-04-12T14-51-44',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -689,29 +710,35 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/09/06/19-shan-chu-lian-biao-de-dao-shu-di-n-ge-jie-dian/">
+                <a href="/2019/04/12/451-gen-ju-zi-fu-chu-xian-pin-lu-pai-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="19-删除链表的倒数第N个节点">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="451-根据字符出现频率排序">
                         
-                        <span class="card-title">19-删除链表的倒数第N个节点</span>
+                        <span class="card-title">451-根据字符出现频率排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
-示例：
-给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.
+                    <div class="summary">题目描述给定一个字符串，请将字符串里的字符按照出现的频率降序排列。
+示例 1:
+输入:
+&quot;tree&quot;
 
-当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&</div>
+输出:
+&quot;eert&quot;
+
+解释:
+&#39;e&#39;出现两次，&#39;r&#39;和&#39</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -724,11 +751,24 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/链表/" target="_blank">
-                        <span class="chip bg-color">链表</span>
+                    <a href="/tags/字符串/" target="_blank">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/桶排序/" target="_blank">
+                        <span class="chip bg-color">桶排序</span>
+                    </a>
+                    
+                    <a href="/tags/排序/" target="_blank">
+                        <span class="chip bg-color">排序</span>
+                    </a>
+                    
+                    <a href="/tags/HashMap/" target="_blank">
+                        <span class="chip bg-color">HashMap</span>
                     </a>
                     
                 </div>
@@ -742,23 +782,27 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/08/30/209-chang-du-zui-xiao-de-zi-shu-zu/">
+                <a href="/2019/04/12/347-qian-k-ge-gao-pin-yuan-su/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="209-长度最小的子数组">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="347-前K个高频元素">
                         
-                        <span class="card-title">209-长度最小的子数组</span>
+                        <span class="card-title">347-前K个高频元素</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。如果不存在符合条件的连续子数组，返回 0。
-示例: 
-输入: s = 7, nums = [2,3,1,2,4,3]
-输出: </div>
+                    <div class="summary">题目描述给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
+示例 1:
+输入: nums = [1,1,1,2,2,3], k = 2
+输出: [1,2]
+示例 2:
+输入: nums = [1], k = 1
+输出: [1]
+说明</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-30
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-12
                             </span>
                         <span class="publish-author">
                             
@@ -775,8 +819,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/数组/" target="_blank">
-                        <span class="chip bg-color">数组</span>
+                    <a href="/tags/桶排序/" target="_blank">
+                        <span class="chip bg-color">桶排序</span>
+                    </a>
+                    
+                    <a href="/tags/排序/" target="_blank">
+                        <span class="chip bg-color">排序</span>
+                    </a>
+                    
+                    <a href="/tags/HashMap/" target="_blank">
+                        <span class="chip bg-color">HashMap</span>
+                    </a>
+                    
+                    <a href="/tags/动态数组/" target="_blank">
+                        <span class="chip bg-color">动态数组</span>
                     </a>
                     
                 </div>
