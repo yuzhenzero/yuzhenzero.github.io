@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>347-前K个高频元素</title>
+      <link href="/2019/04/12/347-qian-k-ge-gao-pin-yuan-su/"/>
+      <url>/2019/04/12/347-qian-k-ge-gao-pin-yuan-su/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个非空的整数数组，返回其中出现频率前 <strong>k</strong> 高的元素。</p><p><strong>示例 1:</strong></p><pre><code>输入: nums = [1,1,1,2,2,3], k = 2输出: [1,2]</code></pre><p><strong>示例 2:</strong></p><pre><code>输入: nums = [1], k = 1输出: [1]</code></pre><p><strong>说明：</strong></p><ul><li>你可以假设给定的 <em>k</em> 总是合理的，且 1 ≤ k ≤ 数组中不相同的元素的个数。</li><li>你的算法的时间复杂度<strong>必须</strong>优于 O(<em>n</em> log <em>n</em>) , <em>n</em> 是数组的大小。</li></ul><hr><h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>采用桶排序。所谓桶排序就是设置若干个带下标的桶，每个桶的下标就是桶内元素出现的次数。</p><p>想要找到 <code>topk</code>，只需要从后往前数 k 个元素出来就可以了。</p><h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> <span class="token function">topKFrequent</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>    Map<span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Integer<span class="token operator">></span> frequencyMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Integer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>        frequencyMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> frequencyMap<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    List<span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> bucket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token punctuation">[</span>nums<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span>Integer key <span class="token operator">:</span> frequencyMap<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">int</span> freq <span class="token operator">=</span> frequencyMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>freq<span class="token punctuation">]</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>            bucket<span class="token punctuation">[</span>freq<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        bucket<span class="token punctuation">[</span>freq<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pos <span class="token operator">=</span> bucket<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> pos <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> pos<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>            ans<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token keyword">return</span> ans<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>使用<code>HashMap</code>的<code>getOrDefault()</code>构造每个元素出现频率的集合。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 桶排序 </tag>
+            
+            <tag> 排序 </tag>
+            
+            <tag> HashMap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>524-通过删除字母匹配到字典里最长单词</title>
       <link href="/2019/04/11/524-tong-guo-shan-chu-zi-mu-pi-pei-dao-zi-dian-li-zui-chang-dan-ci/"/>
       <url>/2019/04/11/524-tong-guo-shan-chu-zi-mu-pi-pei-dao-zi-dian-li-zui-chang-dan-ci/</url>
@@ -101,9 +130,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 二维数组 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       

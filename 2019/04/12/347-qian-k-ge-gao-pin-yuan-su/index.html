@@ -5,10 +5,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="15-三数之和, yuzhenzero">
-    <meta name="description" content="题目描述给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
-注意：答案中不可以包含重复的三元组。
-例如, 给定数组 nums =">
+    <meta name="keywords" content="347-前K个高频元素, yuzhenzero">
+    <meta name="description" content="题目描述给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
+示例 1:
+输入: nums = [1,1,1,2,2,3], k = 2
+输出: [1,2]
+示例 2:
+输入: nums = [1], k = 1
+输出: [1]
+说明">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>15-三数之和 | yuzhenzero</title>
+    <title>347-前K个高频元素 | yuzhenzero</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -275,13 +280,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        15-三数之和
+                        347-前K个高频元素
                     </div>
                 </div>
             </div>
@@ -394,8 +399,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/数组/" target="_blank">
-                                <span class="chip bg-color">数组</span>
+                            <a href="/tags/桶排序/" target="_blank">
+                                <span class="chip bg-color">桶排序</span>
+                            </a>
+                        
+                            <a href="/tags/排序/" target="_blank">
+                                <span class="chip bg-color">排序</span>
+                            </a>
+                        
+                            <a href="/tags/HashMap/" target="_blank">
+                                <span class="chip bg-color">HashMap</span>
                             </a>
                         
                     </div>
@@ -418,21 +431,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-12-28
+                    2019-04-12
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        473
+                        300
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        1 分
                     </div>
                     
                 
@@ -448,60 +461,49 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个包含 <em>n</em> 个整数的数组 <code>nums</code>，判断 <code>nums</code> 中是否存在三个元素 <em>a，b，c ，</em>使得 <em>a + b + c =</em> 0 ？找出所有满足条件且不重复的三元组。</p>
-<p><strong>注意：</strong>答案中不可以包含重复的三元组。</p>
-<pre><code>例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，
-
-满足要求的三元组集合为：
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]
-</code></pre><hr>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>1.先把数组排序</p>
-<p>2.从小到大遍历这个数组，每次取一个元素，将这个元素的相反数设为<code>target</code></p>
-<p>3.在每次遍历中，使用双指针对当前元素的后面的所有元素进行处理，找到两个元素的和为<code>target</code>，这样，三个元素的和就是 0</p>
-<p>4.双指针的具体处理方式为：头尾各一个指针，每次判断两个指针所指的元素的和与<code>target</code>的大小，如果和小了，左指针右移；如果和大了，右指针左移，直到两个指针相遇</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li><p>在第 2 条中，遍历数组的次数不是整个数组的长度，只需要遍历至倒数第 3 个元素，因为是考察 3 个元素的和</p>
-</li>
-<li><p>因为不能有重复的结果，所以前后两次遍历取的元素如果相等，要采取跳过的操作</p>
-</li>
+                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个非空的整数数组，返回其中出现频率前 <strong>k</strong> 高的元素。</p>
+<p><strong>示例 1:</strong></p>
+<pre><code>输入: nums = [1,1,1,2,2,3], k = 2
+输出: [1,2]
+</code></pre><p><strong>示例 2:</strong></p>
+<pre><code>输入: nums = [1], k = 1
+输出: [1]
+</code></pre><p><strong>说明：</strong></p>
+<ul>
+<li>你可以假设给定的 <em>k</em> 总是合理的，且 1 ≤ k ≤ 数组中不相同的元素的个数。</li>
+<li>你的算法的时间复杂度<strong>必须</strong>优于 O(<em>n</em> log <em>n</em>) , <em>n</em> 是数组的大小。</li>
 </ul>
-<h1 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h1><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>Integer<span class="token operator">>></span> <span class="token function">threeSum</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>Integer<span class="token operator">>></span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+<hr>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>采用桶排序。所谓桶排序就是设置若干个带下标的桶，每个桶的下标就是桶内元素出现的次数。</p>
+<p>想要找到 <code>topk</code>，只需要从后往前数 k 个元素出来就可以了。</p>
+<h2 id="Java-实现"><a href="#Java-实现" class="headerlink" title="Java 实现"></a>Java 实现</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> <span class="token function">topKFrequent</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        Arrays<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">continue</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// skip same result</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> k <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> target <span class="token operator">=</span> <span class="token operator">-</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    ans<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    j<span class="token operator">++</span><span class="token punctuation">;</span>
-                    k<span class="token operator">--</span><span class="token punctuation">;</span>
-                    <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> k <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> j<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// skip same result</span>
-                    <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> k <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> k<span class="token operator">--</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// skip same result</span>
-                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    j<span class="token operator">++</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                   k<span class="token operator">--</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    Map<span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Integer<span class="token operator">></span> frequencyMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Integer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        frequencyMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> frequencyMap<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+
+    List<span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> bucket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token punctuation">[</span>nums<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>Integer key <span class="token operator">:</span> frequencyMap<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> freq <span class="token operator">=</span> frequencyMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>freq<span class="token punctuation">]</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            bucket<span class="token punctuation">[</span>freq<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        bucket<span class="token punctuation">[</span>freq<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pos <span class="token operator">=</span> bucket<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> pos <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> pos<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            ans<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p>使用<code>HashMap</code>的<code>getOrDefault()</code>构造每个元素出现频率的集合。</p>
 
             </div>
             <hr/>
@@ -642,7 +644,7 @@
                     </span>
                     <a href="https://yuzhenzero.github.io" class="b-link-green">yuzhenzero</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/28/15-san-shu-zhi-he/" class="b-link-green">15-三数之和</a>
+                    <a href="/2019/04/12/347-qian-k-ge-gao-pin-yuan-su/" class="b-link-green">347-前K个高频元素</a>
                 </p>
             </div>
         </div>
@@ -664,7 +666,7 @@
         repo: 'blog-gitalk',
         owner: 'yuzhenzero',
         admin: "yuzhenzero",
-        id: '2018-12-28T14-27-22',
+        id: '2019-04-12T14-17-21',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -685,35 +687,33 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/12/29/73-ju-zhen-zhi-ling/">
+                <a href="/2019/04/12/347-qian-k-ge-gao-pin-yuan-su/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="73-矩阵置零">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="347-前K个高频元素">
                         
-                        <span class="card-title">73-矩阵置零</span>
+                        <span class="card-title">347-前K个高频元素</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">题目描述给定一个 m x n 的矩阵，如果一个元素为 0，则将其所在行和列的所有元素都设为 0。请使用原地算法。
+                    <div class="summary">题目描述给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
 示例 1:
-输入: 
-[
-  [1,1,1],
-  [1,0,1],
-  [1,1,1]
-]
-输出: 
-[
-  [1,0,1]</div>
+输入: nums = [1,1,1,2,2,3], k = 2
+输出: [1,2]
+示例 2:
+输入: nums = [1], k = 1
+输出: [1]
+说明</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -726,11 +726,20 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/数组/" target="_blank">
-                        <span class="chip bg-color">数组</span>
+                    <a href="/tags/桶排序/" target="_blank">
+                        <span class="chip bg-color">桶排序</span>
+                    </a>
+                    
+                    <a href="/tags/排序/" target="_blank">
+                        <span class="chip bg-color">排序</span>
+                    </a>
+                    
+                    <a href="/tags/HashMap/" target="_blank">
+                        <span class="chip bg-color">HashMap</span>
                     </a>
                     
                 </div>
@@ -744,21 +753,23 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/11/12/chu-ji-dong-tai-gui-hua/">
+                <a href="/2019/04/11/524-tong-guo-shan-chu-zi-mu-pi-pei-dao-zi-dian-li-zui-chang-dan-ci/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="LeetCode探索初级算法 - 动态规划">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="524-通过删除字母匹配到字典里最长单词">
                         
-                        <span class="card-title">LeetCode探索初级算法 - 动态规划</span>
+                        <span class="card-title">524-通过删除字母匹配到字典里最长单词</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">LeetCode探索初级算法 - 动态规划今天在LeetCode上做了几个简单的动态规划的题目，也算是对动态规划有个基本的了解了。现在对动态规划这个算法做一个简单的总结。
-什么是动态规划动态规划英文 Dynamic Programming，</div>
+                    <div class="summary">题目描述给定一个字符串和一个字符串字典，找到字典里面最长的字符串，该字符串可以通过删除给定字符串的某些字符来得到。如果答案不止一个，返回长度最长且字典顺序最小的字符串。如果答案不存在，则返回空字符串。
+示例 1:
+输入:
+s = &quot</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-11
                             </span>
                         <span class="publish-author">
                             
@@ -775,12 +786,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/动态规划/" target="_blank">
-                        <span class="chip bg-color">动态规划</span>
+                    <a href="/tags/字符串/" target="_blank">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
-                    <a href="/tags/总结/" target="_blank">
-                        <span class="chip bg-color">总结</span>
+                    <a href="/tags/双指针/" target="_blank">
+                        <span class="chip bg-color">双指针</span>
                     </a>
                     
                 </div>
