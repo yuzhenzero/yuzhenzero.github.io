@@ -493,7 +493,7 @@ DFS（深度优先搜索） 常用来解决可达性的问题。
 </code></pre><p>对于上面这个给定的矩阵, 返回 <code>0</code>。</p>
 <p><strong>注意:</strong> 给定的矩阵<code>grid</code> 的长度和宽度都不超过 50。</p>
 <hr>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用 DFS 遍历时返回当前岛屿的面积，便利数组时每次比较当前岛屿面积与最大岛屿面积的大小。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用 DFS 遍历时返回当前岛屿的面积，遍历数组时每次比较当前岛屿面积与最大岛屿面积的大小。</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">int</span> m<span class="token punctuation">,</span> n<span class="token punctuation">;</span>
 <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> direction <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxAreaOfIsland</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -958,12 +958,12 @@ X O X X
                 <div class="card-content article-content">
                     <div class="summary">
 BFS（广度优先搜索） 常用来解决最短路径问题。
-第一次便利到目的节点时，所经过的路径是最短路径。
+第一次遍历到目的节点时，所经过的路径是最短路径。
 
 几个要点：
 
 只能用来求解无权图的最短路径问题
-队列：用来存储每一层便利得到的节点
+队列：用来存储每一层遍历得到的节点
 标记：对于遍历过的结点，应将其标记，以防重复访问
 
 </div>
