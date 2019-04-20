@@ -140,9 +140,9 @@
       
         <tags>
             
-            <tag> 数组 </tag>
-            
             <tag> 链表 </tag>
+            
+            <tag> 数组 </tag>
             
             <tag> 字符串 </tag>
             
@@ -202,9 +202,9 @@
             
             <tag> Java容器 </tag>
             
-            <tag> 比较器 </tag>
-            
             <tag> 贪心思想 </tag>
+            
+            <tag> 比较器 </tag>
             
         </tags>
       
@@ -401,9 +401,9 @@
       
         <tags>
             
-            <tag> 二维数组 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 二维数组 </tag>
             
         </tags>
       
