@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>MySQL插入中文数据显示乱码解决方案</title>
+      <link href="/2019/05/10/mysql-cha-ru-zhong-wen-shu-ju-xian-shi-luan-ma-jie-jue-fang-an/"/>
+      <url>/2019/05/10/mysql-cha-ru-zhong-wen-shu-ju-xian-shi-luan-ma-jie-jue-fang-an/</url>
+      
+        <content type="html"><![CDATA[<p>跟着视频教程学习的时候，有一部操作是使用 spring boot jpa 操作数据库，往数据库里面插入数据，但是数据的名称是中文的话，在数据库里面显示的是问号，也就是乱码，查了一番资料，找到了解决方案。</p><p>环境：</p><ul><li>centOS 7.3</li><li>MySQL 5.7.17</li></ul><p>首先，定位到出问题的地方，是MySQL的配置文件里面缺少了编码的设置，导致中文显示乱码。如何找到配置文件呢？</p><ol><li><p>查看是否使用了指定目录的<code>my.cnf</code><br>使用命令</p><pre class=" language-bash"><code class="language-bash"><span class="token function">ps</span> aux<span class="token operator">|</span><span class="token function">grep</span> mysql<span class="token operator">|</span><span class="token function">grep</span> <span class="token string">'my.cnf'</span></code></pre><p>如果没有反应，说明没有设置指定目录的<code>my.cnf</code></p></li><li><p>查看 MySQL 默认读取<code>my.cnf</code>的目录<br>使用命令</p><pre class=" language-bash"><code class="language-bash">mysql --help<span class="token operator">|</span><span class="token function">grep</span> <span class="token string">'my.cnf'</span></code></pre><p>输出</p><pre><code>                      order of preference, my.cnf, $MYSQL_TCP_PORT,/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf</code></pre><p>这些就是MySQL 默认会搜寻<code>my.cnf</code>的目录，顺序排前的优先。 </p></li></ol><p>所以需要修改<code>/etc/my.cnf</code>这个文件。</p><p>使用命令</p><pre class=" language-bash"><code class="language-bash"><span class="token function">vi</span> /etc/my.cnf</code></pre><p>在<code>[mysqld]</code>标签下加入</p><pre><code>character-set-server = utf8</code></pre><p>保存退出。</p><p>再使用 IDEA 测试插入含有中文的数据，中文可以正常显示了。</p><hr><p>参考文献：</p><p><a href="https://blog.csdn.net/fdipzone/article/details/52705507" target="_blank" rel="noopener">mysql 查看当前使用的配置文件my.cnf的方法</a></p><p><a href="https://blog.csdn.net/CloudWaves/article/details/75810240" target="_blank" rel="noopener">Centos下修改mysql的默认编码方式</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术痒点解决 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+            <tag> centOS </tag>
+            
+            <tag> 虚拟机 </tag>
+            
+            <tag> 字符编码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>回溯法总结</title>
       <link href="/2019/04/26/hui-su-fa-zong-jie/"/>
       <url>/2019/04/26/hui-su-fa-zong-jie/</url>
@@ -237,9 +268,9 @@
             
             <tag> Java容器 </tag>
             
-            <tag> 贪心思想 </tag>
-            
             <tag> 比较器 </tag>
+            
+            <tag> 贪心思想 </tag>
             
         </tags>
       
